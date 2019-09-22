@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Karthik | page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
+    <script src="https://unpkg.com/react@latest/umd/react.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@material-ui/core@latest/umd/material-ui.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js" crossorigin="anonymous"></script>
+    <!-- Fonts to support Material Design -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <!-- Icons to support Material Design -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+const {
+  colors,
+  CssBaseline,
+  MuiThemeProvider,
+  Typography,
+  Container,
+  makeStyles,
+  createMuiTheme,
+  Box,
+  SvgIcon,
+  Link,
+  Paper,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+} = MaterialUI;
+
+// Create a theme instance.
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+    primary: {
+      main: '#556cd6',
+    },
+    secondary: {
+      main: '#19857b',
+    },
+    error: {
+      main: colors.red.A400,
+    },
+    background: {
+      default: '#485564',
+    },
+  },
+});
+
+const useStyles = makeStyles(theme => ({
+  project: {
+    margin: theme.spacing(6, 0, 3),
+  },
+  root: {
+    '& a': {
+      padding: 5,
+      color: 'white',
+      // fontSize: '2em'
+    }
+  },
+  social: {
+    '& a': {
+      padding: 5,
+      color: 'white',
+      fontSize: '2em'
+    }
+  }
+
+}));
+
+function Projects() {
+  const classes = useStyles();
+  return (
+    <div>
+      <Typography variant="h5" component="h1" className={classes.project} color="textSecondary">
+        Personal Projects
+      </Typography>
+      <List className={classes.root}>
+        <ListItem>
+          <ListItemText primary="News Aggregator" secondary="Aggregate news from multiple sources [React, NodeJS]"/>
+          <div><a target="_blank" href="https://github.com/karthikjag/news-aggregator-app">app</a></div>
+          <div><a target="_blank" href="https://github.com/karthikjag/news-aggregator-api">api</a></div>
+        </ListItem>
+        <Divider component="li" />
+        <ListItem>
+          <ListItemText primary="Archives" secondary="An app to catalog your collection of Books, Games, Movies and Music [React, NodeJS, MongoDB]" />
+          <div><a target="_blank" href="https://github.com/karthikjag/archives-app">app</a></div>
+          <div><a target="_blank" href="https://github.com/karthikjag/archives-api">api</a></div>
+        </ListItem>
+        <Divider component="li" />
+        <ListItem>
+          <ListItemText primary="Game Catalog" secondary="Game cataloging app [React, NodeJS, MongoDB]" />
+        </ListItem>
+        <Divider omponent="li" />
+        <ListItem>
+          <ListItemText primary="more on the way..." secondary="" />
+        </ListItem>
+        <Divider omponent="li" />
+      </List>
+    </div>
+  );
+}
+
+function Social() {
+  const classes = useStyles();
+  return (
+    <div className={classes.social}>
+      <a target="_blank" href="https://github.com/karthikjag"><i className="fab fa-github"></i></a>
+      <a target="_blank" href="https://www.linkedin.com/in/karthikjagannathan"><i className="fab fa-linkedin"></i></a>
+    </div>
+  );
+}
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      Karthik Jagannathan{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const useStylesFooter = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '70vh',
+  },
+  main: {
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(2),
+  },
+  footer: {
+    padding: theme.spacing(2),
+    marginTop: 'auto',
+    backgroundColor: '485564'
+  },
+}));
+
+function StickyFooter() {
+  const classes = useStylesFooter();
+
+  return (
+    <div className={classes.root}>
+      <footer className={classes.footer}>
+        <Container maxWidth="sm">
+          <Copyright />
+        </Container>
+      </footer>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div>
+    <Container maxWidth="sm">
+      <div style={{ marginTop: 24, }}>
+        <Typography variant="h3" component="h1" gutterBottom>
+          Karthik Jagannathan
+        </Typography>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Developer | Engineer
+        </Typography>
+        <Typography variant="body1">
+          Full stack Developer with DevOps interests
+        </Typography>
+        <Social />
+        <Projects />
+      </div>
+    </Container>
+    <StickyFooter />
+    </div>
+  );
+}
+ReactDOM.render(
+  <MuiThemeProvider theme={theme}>
+    <CssBaseline />
+    <App />
+  </MuiThemeProvider>,
+  document.querySelector('#root'),
+);
+    </script>
+  </body>
+</html>
